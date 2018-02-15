@@ -47,27 +47,30 @@ func uploadFileToAWS(urlString: String, name: String, fileName: String, mimeType
 
     print(request)
     
-//    let session=URLSession.shared
-//    session.dataTask(with: request as URLRequest) { (responseData, response, error) -> Void in
-//        if error==nil{
-//            sucess(responseData as NSData?)
-//        }
-//        else{
-//            failure(error as? NSData)
-//        }
-//    }.resume()
-    
-    let session = URLSession.shared
-    session.dataTask(with: request as URLRequest, completionHandler: {(responseData, response, error) in
-        if responseData != nil {
+    //method 1: session uploadTaskWithRequest
+    let session=URLSession.shared
+    session.uploadTask(with: request as URLRequest, from: nil) { (responseData, response, error) -> Void in
+        if error==nil{
             sucess(responseData as NSData?)
-        }else if error != nil {
-            failure(error as? NSData)
-        }else if response != nil {
-            print(response ?? "response completed")
         }
-    }).resume()
+        else{
+            failure(error as? NSData)
+        }
+    }.resume()
     
+    //method 2: session dataTaskWithRequest
+//    let session = URLSession.shared
+//    session.dataTask(with: request as URLRequest, completionHandler: {(responseData, response, error) in
+//        if responseData != nil {
+//            sucess(responseData as NSData?)
+//        }else if error != nil {
+//            failure(error as? NSData)
+//        }else if response != nil {
+//            print(response ?? "response completed")
+//        }
+//    }).resume()
+    
+    //method 3: NSURLConnection.sendAsynchronousRequest
 //    let que=OperationQueue()
 //    NSURLConnection.sendAsynchronousRequest(request as URLRequest, queue: que, completionHandler: {
 //
@@ -88,98 +91,6 @@ func uploadFileToAWS(urlString: String, name: String, fileName: String, mimeType
 //
 //    })
     
-}
-
-
-func uploadFileToS3(urlString: String, name: String, fileName: String, mimeType: String, parameters: [String: String], fileData: Data, sucess:@escaping (NSData?)-> Void, failure:@escaping (NSData?)->Void){
-
-    if urlString.isEmpty{
-        print ("主地址不能为空")
-        return
-    }
-    
-    let boundary = "Boundary-\(UUID().uuidString)"
-    //固定拼接的第一部分
-    let top=NSMutableString()
-    top.appendFormat("%@%@\r\n", "--",UUID().uuidString)
-    top.appendFormat("Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", name,fileName)
-    top.appendFormat("Content-Type: %s\r\n\r\n", mimeType)
-    
-    //固定拼接第三部分
-    let buttom=NSMutableString()
-    for(key, value) in parameters {
-        buttom.appendFormat("%@%@\r\n", "--",UUID().uuidString)
-        buttom.append("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
-        buttom.append("\(value)\r\n")
-        buttom.appendFormat("%@%@--\r\n", "--",UUID().uuidString)
-    }
-    
-    let form = NSMutableString()
-    let boundaryPrefix = "--\(boundary)\r\n"
-    for(key, value) in parameters {
-        form.append(boundaryPrefix)
-        form.append("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
-        form.append("\(value)\r\n")
-        form.appendFormat("%@%@boundary--\r\n", "--",UUID().uuidString)
-    }
-    //拼接
-    let fromData=NSMutableData()
-    //非文件参数
-//    if (parameters != nil){
-//        fromData.append((paramters.data(using: String.Encoding.utf8))!)
-//    }
-    fromData.append(form.data(using: String.Encoding.utf8.rawValue)!)
-    fromData.append(fileData as Data)
-    fromData.append(top.data(using: String.Encoding.utf8.rawValue)!)
-    fromData.append(buttom.data(using: String.Encoding.utf8.rawValue)!)
-    
-    //可变请求
-//    let bodyData: Data = createBody(parameters: paramters, boundary: boundary, data: fileData, mimeType: mimeType, filename: fileName)
-    
-    let request=NSMutableURLRequest(url: NSURL(string: urlString)! as URL)
-    request.httpBody=fromData as Data
-    request.httpMethod="POST"
-    request.addValue(String(fromData.length), forHTTPHeaderField:"Content-Length")
-//    let contype=String(format: "multipart/form-data; boundary=%s", boundary)
-    let contype = "multipart/form-data; boundary=\(boundary)"
-    request.setValue(contype, forHTTPHeaderField: "Content-Type")
-    
-    let session=URLSession.shared
-    session.uploadTask(with: request as URLRequest, from: nil) { (responseData, response, error) -> Void in
-        if error==nil{
-            sucess(responseData as NSData?)
-        }
-        else{
-            failure(error as? NSData)
-        }
-        }.resume()
-}
-
-func createBody(parameters: [String: String], boundary: String, data: Data, mimeType: String, filename: String)->Data {
-    let body = NSMutableData()
-    let boundaryPrefix = "--\(boundary)\r\n"
-    let form = NSMutableString()
-    for(key, value) in parameters {
-        form.append(boundaryPrefix)
-        form.append("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
-        form.append("\(value)\r\n")
-    }
-    body.append(form.data(using: String.Encoding.utf8.rawValue)!)
-    
-    let part2 = NSMutableString()
-    part2.append("Boundary-\(UUID().uuidString)")
-    part2.append("Content-Disposition: form-data; name=\"file\"; filename=\"\(filename)\"\r\n")
-    part2.append("Content-Type: \(mimeType)\r\n\r\n")
-    body.append(part2.data(using: String.Encoding.utf8.rawValue)!)
-    
-    body.append(data)
-    
-    let part3 = NSMutableString()
-    part3.append("\r\n")
-    part3.append("--".appending(boundary.appending("--")))
-    body.append(part3.data(using: String.Encoding.utf8.rawValue)!)
-    print(body)
-    return body as Data
 }
 
 func uploadFile(urlString: String, name: String, fileName: String, mimeType: String, parameters: [String: String], fileData: Data, sucess:@escaping (NSData?)-> Void, failure:@escaping (NSData?)->Void){
