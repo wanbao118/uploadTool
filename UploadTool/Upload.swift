@@ -49,14 +49,16 @@ func uploadFileToAWS(urlString: String, name: String, fileName: String, mimeType
     
     //method 1: session uploadTaskWithRequest
     let session=URLSession.shared
-    session.uploadTask(with: request as URLRequest, from: nil) { (responseData, response, error) -> Void in
+    let task = session.uploadTask(with: request as URLRequest, from: nil) { (responseData, response, error) -> Void in
         if error==nil{
             sucess(responseData as NSData?)
         }
         else{
             failure(error as? NSData)
         }
-    }.resume()
+    }
+    print(task.progress)
+    task.resume()
     
     //method 2: session dataTaskWithRequest
 //    let session = URLSession.shared

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UploadTool/Upload.swift"
-            timestampString = "540371365.82775"
+            timestampString = "540376958.914605"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "uploadFile(urlString:name:fileName:mimeType:parameters:fileData:sucess:failure:)"
             landmarkType = "9">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UploadTool/Upload.swift"
-            timestampString = "540371365.828161"
+            timestampString = "540376958.91477"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "uploadFile(urlString:name:fileName:mimeType:parameters:fileData:sucess:failure:)"
             landmarkType = "9">
             <Locations>
@@ -42,11 +42,11 @@
                   moduleName = "UploadTool"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jiangwanbao/Documents/iOS/UploadTool/UploadTool/Upload.swift"
-                  timestampString = "540311013.419039"
+                  timestampString = "540376960.650351"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "176"
-                  endingLineNumber = "176"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
                   offsetFromSymbolStart = "267">
                </Location>
                <Location
@@ -57,11 +57,11 @@
                   moduleName = "UploadTool"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jiangwanbao/Documents/iOS/UploadTool/UploadTool/Upload.swift"
-                  timestampString = "540311013.421967"
+                  timestampString = "540376960.6545"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "177"
-                  endingLineNumber = "177"
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
                   offsetFromSymbolStart = "84">
                </Location>
             </Locations>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UploadTool/Upload.swift"
-            timestampString = "540371365.828564"
+            timestampString = "540376958.914896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "uploadFile(urlString:name:fileName:mimeType:parameters:fileData:sucess:failure:)"
             landmarkType = "9">
             <Locations>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UploadTool/Upload.swift"
-            timestampString = "540371365.828968"
+            timestampString = "540376958.915005"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "uploadFile(urlString:name:fileName:mimeType:parameters:fileData:sucess:failure:)"
             landmarkType = "9">
          </BreakpointContent>
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UploadTool/Upload.swift"
-            timestampString = "540371365.829685"
+            timestampString = "540376958.915112"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UploadTool/ViewController.swift"
-            timestampString = "540371365.830027"
+            timestampString = "540376958.915197"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,13 +170,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UploadTool/ViewController.swift"
-            timestampString = "540371365.830096"
+            timestampString = "540376958.915608"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UploadTool/Upload.swift"
+            timestampString = "540376958.915975"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "uploadFileToAWS(urlString:name:fileName:mimeType:parameters:fileData:sucess:failure:)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

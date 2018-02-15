@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,29 +21,56 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTP-mE-6rh">
                                 <rect key="frame" x="84" y="353" width="246" height="30"/>
-                                <state key="normal" title="Select image and upload to AWS S3"/>
+                                <color key="backgroundColor" red="0.43994078303827411" green="0.91923042370598773" blue="0.94723588199999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Select image and upload to AWS S3">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" red="0.439940783" green="0.91923042369999997" blue="0.94723588199999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="fromAlbum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4mL-fg-USk"/>
                                 </connections>
                             </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jgf-8O-mAs">
-                                <rect key="frame" x="132" y="442" width="150" height="2"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SRI-lg-C7Q">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="328"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="         " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQ8-rb-Y8Q">
+                                <rect key="frame" x="181" y="426" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jgf-8O-mAs">
+                                <rect key="frame" x="20" y="409" width="374" height="2"/>
                             </progressView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="aTP-mE-6rh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Atn-Pr-r2m"/>
-                            <constraint firstItem="aTP-mE-6rh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="eQd-uE-kYF"/>
-                            <constraint firstItem="aTP-mE-6rh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="irN-A5-RIl"/>
-                            <constraint firstItem="aTP-mE-6rh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pLD-6K-bls"/>
+                            <constraint firstItem="jgf-8O-mAs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="4A8-zR-lKO"/>
+                            <constraint firstItem="SRI-lg-C7Q" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="8OQ-Yx-Yhi"/>
+                            <constraint firstItem="jgf-8O-mAs" firstAttribute="top" secondItem="aTP-mE-6rh" secondAttribute="bottom" constant="26" id="915-zS-kv6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VQ8-rb-Y8Q" secondAttribute="trailing" constant="188" id="BBA-Lp-RM7"/>
+                            <constraint firstAttribute="trailing" secondItem="SRI-lg-C7Q" secondAttribute="trailing" id="CMn-xa-mbp"/>
+                            <constraint firstItem="SRI-lg-C7Q" firstAttribute="centerX" secondItem="aTP-mE-6rh" secondAttribute="centerX" id="GJP-UK-xPQ"/>
+                            <constraint firstItem="VQ8-rb-Y8Q" firstAttribute="top" secondItem="jgf-8O-mAs" secondAttribute="bottom" constant="15" id="afn-zL-NCA"/>
+                            <constraint firstItem="aTP-mE-6rh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="cIB-vg-7th"/>
+                            <constraint firstItem="aTP-mE-6rh" firstAttribute="top" secondItem="SRI-lg-C7Q" secondAttribute="bottom" constant="25" id="gqV-xa-xt9"/>
+                            <constraint firstItem="SRI-lg-C7Q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hnP-BD-kyy"/>
+                            <constraint firstItem="aTP-mE-6rh" firstAttribute="centerX" secondItem="jgf-8O-mAs" secondAttribute="centerX" id="vDC-bI-RQP"/>
+                            <constraint firstItem="VQ8-rb-Y8Q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="181" id="xT9-9I-Ofe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="selectedImageView" destination="SRI-lg-C7Q" id="dWg-La-0Qe"/>
+                        <outlet property="uploadButton" destination="aTP-mE-6rh" id="dMr-JY-DTE"/>
+                        <outlet property="uploadProgressLabel" destination="VQ8-rb-Y8Q" id="R1N-VX-zxh"/>
+                        <outlet property="uploadProgressView" destination="jgf-8O-mAs" id="c5l-xA-fDe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135" y="132.04225352112675"/>
+            <point key="canvasLocation" x="134.78260869565219" y="131.25"/>
         </scene>
     </scenes>
 </document>

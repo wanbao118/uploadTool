@@ -10,6 +10,14 @@ import UIKit
 
 class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
+    @IBOutlet weak var selectedImageView: UIImageView!
+    
+    @IBOutlet weak var uploadProgressView: UIProgressView!
+    
+    @IBOutlet weak var uploadProgressLabel: UILabel!
+    
+    @IBOutlet weak var uploadButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +42,9 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let pickedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        selectedImageView.image = pickedImage
+        selectedImageView.backgroundColor = UIColor.clear
+        self.dismiss(animated: true, completion: nil)
         let imageNSURL = info[UIImagePickerControllerImageURL] as! NSURL
         print(imageNSURL.lastPathComponent ?? "")
         let imageName:String = imageNSURL.lastPathComponent!
