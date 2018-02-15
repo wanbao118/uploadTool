@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79A3A116ACE53C7908575581 /* Pods_UploadTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C9A2F2A1A71729504BE4CDC /* Pods_UploadTool.framework */; };
 		93DFF1F92032DBB0000C558D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DFF1F82032DBB0000C558D /* AppDelegate.swift */; };
 		93DFF1FB2032DBB0000C558D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DFF1FA2032DBB0000C558D /* ViewController.swift */; };
 		93DFF1FE2032DBB0000C558D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93DFF1FC2032DBB0000C558D /* Main.storyboard */; };
 		93DFF2002032DBB0000C558D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93DFF1FF2032DBB0000C558D /* Assets.xcassets */; };
 		93DFF2032032DBB0000C558D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93DFF2012032DBB0000C558D /* LaunchScreen.storyboard */; };
+		93DFF20D20331252000C558D /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DFF20C20331252000C558D /* Upload.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03C27C68D1C84966D1FA68BC /* Pods-UploadTool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UploadTool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UploadTool/Pods-UploadTool.debug.xcconfig"; sourceTree = "<group>"; };
+		194B51FA0BA6ACA8F47BB831 /* Pods-UploadTool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UploadTool.release.xcconfig"; path = "Pods/Target Support Files/Pods-UploadTool/Pods-UploadTool.release.xcconfig"; sourceTree = "<group>"; };
+		4C9A2F2A1A71729504BE4CDC /* Pods_UploadTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UploadTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93DFF1F52032DBB0000C558D /* UploadTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UploadTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93DFF1F82032DBB0000C558D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93DFF1FA2032DBB0000C558D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +27,7 @@
 		93DFF1FF2032DBB0000C558D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93DFF2022032DBB0000C558D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93DFF2042032DBB0000C558D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93DFF20C20331252000C558D /* Upload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upload.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79A3A116ACE53C7908575581 /* Pods_UploadTool.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +47,8 @@
 			children = (
 				93DFF1F72032DBB0000C558D /* UploadTool */,
 				93DFF1F62032DBB0000C558D /* Products */,
+				E8E3F333471C665332F6D8F3 /* Pods */,
+				D6D25C9B24C6E6B7DE921ABD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,8 +69,26 @@
 				93DFF1FF2032DBB0000C558D /* Assets.xcassets */,
 				93DFF2012032DBB0000C558D /* LaunchScreen.storyboard */,
 				93DFF2042032DBB0000C558D /* Info.plist */,
+				93DFF20C20331252000C558D /* Upload.swift */,
 			);
 			path = UploadTool;
+			sourceTree = "<group>";
+		};
+		D6D25C9B24C6E6B7DE921ABD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C9A2F2A1A71729504BE4CDC /* Pods_UploadTool.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E8E3F333471C665332F6D8F3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				03C27C68D1C84966D1FA68BC /* Pods-UploadTool.debug.xcconfig */,
+				194B51FA0BA6ACA8F47BB831 /* Pods-UploadTool.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93DFF2072032DBB0000C558D /* Build configuration list for PBXNativeTarget "UploadTool" */;
 			buildPhases = (
+				691E5F9F730070219F1D0AF4 /* [CP] Check Pods Manifest.lock */,
 				93DFF1F12032DBB0000C558D /* Sources */,
 				93DFF1F22032DBB0000C558D /* Frameworks */,
 				93DFF1F32032DBB0000C558D /* Resources */,
+				40AE8B9BC75096F6A4BD9B70 /* [CP] Embed Pods Frameworks */,
+				048CCBF41AA8D31833FF2FB5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,11 +161,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		048CCBF41AA8D31833FF2FB5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UploadTool/Pods-UploadTool-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		40AE8B9BC75096F6A4BD9B70 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-UploadTool/Pods-UploadTool-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UploadTool/Pods-UploadTool-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		691E5F9F730070219F1D0AF4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UploadTool-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		93DFF1F12032DBB0000C558D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93DFF20D20331252000C558D /* Upload.swift in Sources */,
 				93DFF1FB2032DBB0000C558D /* ViewController.swift in Sources */,
 				93DFF1F92032DBB0000C558D /* AppDelegate.swift in Sources */,
 			);
@@ -272,8 +357,10 @@
 		};
 		93DFF2082032DBB0000C558D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03C27C68D1C84966D1FA68BC /* Pods-UploadTool.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U46ZV9248J;
 				INFOPLIST_FILE = UploadTool/Info.plist;
@@ -287,8 +374,10 @@
 		};
 		93DFF2092032DBB0000C558D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 194B51FA0BA6ACA8F47BB831 /* Pods-UploadTool.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U46ZV9248J;
 				INFOPLIST_FILE = UploadTool/Info.plist;
