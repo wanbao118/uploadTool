@@ -32,7 +32,6 @@ func uploadFileToAWS(urlString: String, name: String, fileName: String, mimeType
     }
     
      //写入图片内容
-//    let ImgPath = NSHomeDirectory()+(carData.value(forKey: "key") as! String)
     let ImgPath = fileName
      print(ImgPath)
     body.append(NSString(format: "--%@\r\n", boundary).data(using: String.Encoding.utf8.rawValue)!)

@@ -20,12 +20,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTP-mE-6rh">
-                                <rect key="frame" x="84" y="353" width="246" height="30"/>
-                                <color key="backgroundColor" red="0.43994078303827411" green="0.91923042370598773" blue="0.94723588199999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="353" width="374" height="37"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="dwF-vw-Peu"/>
+                                </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Select image and upload to AWS S3">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="titleShadowColor" red="0.439940783" green="0.91923042369999997" blue="0.94723588199999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="fromAlbum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4mL-fg-USk"/>
@@ -43,20 +46,28 @@
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jgf-8O-mAs">
                                 <rect key="frame" x="20" y="409" width="374" height="2"/>
                             </progressView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oyc-UN-YKQ">
+                                <rect key="frame" x="87" y="486" width="240" height="169"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="jgf-8O-mAs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="4A8-zR-lKO"/>
                             <constraint firstItem="SRI-lg-C7Q" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="8OQ-Yx-Yhi"/>
-                            <constraint firstItem="jgf-8O-mAs" firstAttribute="top" secondItem="aTP-mE-6rh" secondAttribute="bottom" constant="26" id="915-zS-kv6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VQ8-rb-Y8Q" secondAttribute="trailing" constant="188" id="BBA-Lp-RM7"/>
                             <constraint firstAttribute="trailing" secondItem="SRI-lg-C7Q" secondAttribute="trailing" id="CMn-xa-mbp"/>
-                            <constraint firstItem="SRI-lg-C7Q" firstAttribute="centerX" secondItem="aTP-mE-6rh" secondAttribute="centerX" id="GJP-UK-xPQ"/>
+                            <constraint firstItem="aTP-mE-6rh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="353" id="KVG-3B-pod"/>
+                            <constraint firstItem="aTP-mE-6rh" firstAttribute="leading" secondItem="jgf-8O-mAs" secondAttribute="leading" id="KlX-fW-kBi"/>
+                            <constraint firstItem="aTP-mE-6rh" firstAttribute="trailing" secondItem="jgf-8O-mAs" secondAttribute="trailing" id="R4a-YZ-kdY"/>
+                            <constraint firstItem="oyc-UN-YKQ" firstAttribute="centerX" secondItem="jgf-8O-mAs" secondAttribute="centerX" id="Uc8-1Q-UiE"/>
+                            <constraint firstItem="oyc-UN-YKQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="YaX-ON-uPa"/>
+                            <constraint firstItem="jgf-8O-mAs" firstAttribute="top" secondItem="aTP-mE-6rh" secondAttribute="bottom" constant="19" id="ZF5-32-9jr"/>
                             <constraint firstItem="VQ8-rb-Y8Q" firstAttribute="top" secondItem="jgf-8O-mAs" secondAttribute="bottom" constant="15" id="afn-zL-NCA"/>
-                            <constraint firstItem="aTP-mE-6rh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="cIB-vg-7th"/>
-                            <constraint firstItem="aTP-mE-6rh" firstAttribute="top" secondItem="SRI-lg-C7Q" secondAttribute="bottom" constant="25" id="gqV-xa-xt9"/>
+                            <constraint firstItem="aTP-mE-6rh" firstAttribute="top" secondItem="SRI-lg-C7Q" secondAttribute="bottom" constant="25" id="g0f-ub-hck"/>
                             <constraint firstItem="SRI-lg-C7Q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hnP-BD-kyy"/>
-                            <constraint firstItem="aTP-mE-6rh" firstAttribute="centerX" secondItem="jgf-8O-mAs" secondAttribute="centerX" id="vDC-bI-RQP"/>
+                            <constraint firstItem="oyc-UN-YKQ" firstAttribute="top" secondItem="VQ8-rb-Y8Q" secondAttribute="bottom" constant="39" id="uQs-Vl-pEp"/>
+                            <constraint firstItem="aTP-mE-6rh" firstAttribute="centerX" secondItem="SRI-lg-C7Q" secondAttribute="centerX" id="wMy-Eh-ew7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oyc-UN-YKQ" secondAttribute="bottom" constant="81" id="xO6-hy-Z0N"/>
                             <constraint firstItem="VQ8-rb-Y8Q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="181" id="xT9-9I-Ofe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

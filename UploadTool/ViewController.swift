@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate, URLSessionTaskDelegate, URLSessionDataDelegate {
     
     @IBOutlet weak var selectedImageView: UIImageView!
     
@@ -20,7 +20,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.uploadProgressView.progress = 0
+        self.uploadProgressLabel.text = "0%"
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -41,6 +42,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        self.uploadButton.isEnabled = false
         let pickedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         selectedImageView.image = pickedImage
         selectedImageView.backgroundColor = UIColor.clear
@@ -60,22 +62,36 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
 //            let uploadURL:String = "http://52.87.151.146:8080/s3/upload"
             let uploadURL: String = "http://127.0.0.1:8080/multipart/upload"
 //            let uploadURL: String = "http://192.168.0.101:8080/multipart/upload"
+            
             uploadFileToAWS(urlString: uploadURL, name: "file", fileName: imageName, mimeType: "image/jpg", parameters: ["key":"\(imageName)"], fileData: imageData!, sucess: {(responseData)-> Void in
                 let result = String(data: responseData! as Data, encoding: String.Encoding.utf8)
                 print(result ?? "")
             }, failure: { (error) -> Void in
-
             })
-//            uploadFile(urlString: uploadURL, name: "file", fileName: filePath, mimeType: "multipart/form-data", parameters: ["key":"\(timeStamp)"], fileData: imageData!, sucess: {(responseData)-> Void in
-//                let result = String(data: responseData! as Data, encoding: String.Encoding.utf8)
-//                print(result ?? "")
-//            }, failure: { (error) -> Void in
-//
-//            })
+            self.uploadButton.isEnabled = true
         }
         
         picker.dismiss(animated: true, completion: nil)
     }
 
+    
+    public func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64){
+    
+        let uploadProgress: Float = Float(totalBytesSent)/Float(totalBytesExpectedToSend)
+        self.uploadProgressView.progress = uploadProgress
+        let uploadPercent = Int(uploadProgress * 100)
+        self.uploadProgressLabel.text = "\(uploadPercent)%"
+        
+    }
+    
+    public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?){
+//        let alertView = UIAlertView(title: "Alert", message: error?.localizedDescription, delegate: nil, cancelButtonTitle: "OK")
+//        alertView.show()
+        let alertView = UIAlertController(title: "Alert", message: error as? String, preferredStyle: .alert)
+        alertView.loadView()
+        self.uploadButton.isEnabled = true
+    }
+    
+    
 }
 
