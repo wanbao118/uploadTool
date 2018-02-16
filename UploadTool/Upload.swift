@@ -94,6 +94,57 @@ func uploadFileToAWS(urlString: String, name: String, fileName: String, mimeType
     
 }
 
+func uploadFileToAWS(viewController: ViewController, session: URLSession, urlString: String, name: String, fileName: String, mimeType: String, parameters: [String: String], fileData: Data) -> URLSessionUploadTask {
+    
+    let request:NSMutableURLRequest = NSMutableURLRequest()
+    request.url = NSURL(string: urlString)! as URL
+    request.httpMethod = "POST"
+    request.timeoutInterval = 10
+    let body:NSMutableData = NSMutableData()
+    //设置表单分隔符
+    let boundary:NSString = "----------------------1465789351321346"
+    let contentType = "multipart/form-data;boundary=\(boundary)"
+    request.addValue(contentType, forHTTPHeaderField: "Content-Type")
+    //写入Info内容
+    for(key, value) in parameters {
+        body.append(NSString(format: "--%@\r\n", boundary).data(using: String.Encoding.utf8.rawValue)!)
+        body.append(NSString(format: "Content-Disposition: form-data; name=\"%@\"\r\n\r\n", key).data(using: String.Encoding.utf8.rawValue)!)
+        body.append(NSString(format:"%@\r\n", value).data(using: String.Encoding.utf8.rawValue)!)
+    }
+    
+    //写入图片内容
+    let ImgPath = fileName
+    print(ImgPath)
+    body.append(NSString(format: "--%@\r\n", boundary).data(using: String.Encoding.utf8.rawValue)!)
+    body.append(NSString(format: "Content-Disposition:form-data;name=\"%@\";filename=\"\(ImgPath)\"\r\n" as NSString, "file").data(using: String.Encoding.utf8.rawValue)!)
+    body.append("Content-Type:image/jpeg\r\n\r\n".data(using: String.Encoding.utf8)!)
+    body.append(fileData)
+    body.append("\r\n".data(using: String.Encoding.utf8)!)
+    
+    //写入尾部
+    body.append(NSString(format: "--%@--\r\n", boundary).data(using: String.Encoding.utf8.rawValue)!)
+    request.httpBody = body as Data
+    
+    print(request)
+    
+    //method 1: session uploadTaskWithRequest
+//    let session=URLSession.shared
+    let task = session.uploadTask(with: request as URLRequest, from: nil) { (responseData, response, error) -> Void in
+        if error==nil{
+            print(responseData ?? "")
+        }
+        else{
+            print(error ?? "")
+            let alertView = UIAlertView(title: "Alert", message: error?.localizedDescription, delegate: nil, cancelButtonTitle: "OK")
+            alertView.show()
+            viewController.uploadButton.isEnabled = true
+        }
+    }
+//    print(task.progress)
+//    task.resume()
+    return task
+}
+
 func uploadFile(urlString: String, name: String, fileName: String, mimeType: String, parameters: [String: String], fileData: Data, sucess:@escaping (NSData?)-> Void, failure:@escaping (NSData?)->Void){
     
     Alamofire.upload(multipartFormData: { (multipartFormData) in

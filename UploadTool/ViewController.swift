@@ -43,6 +43,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         self.uploadButton.isEnabled = false
+        self.uploadProgressView.progress = 0
+        self.uploadProgressLabel.text = "0%"
         let pickedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         selectedImageView.image = pickedImage
         selectedImageView.backgroundColor = UIColor.clear
@@ -63,12 +65,15 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             let uploadURL: String = "http://127.0.0.1:8080/multipart/upload"
 //            let uploadURL: String = "http://192.168.0.101:8080/multipart/upload"
             
-            uploadFileToAWS(urlString: uploadURL, name: "file", fileName: imageName, mimeType: "image/jpg", parameters: ["key":"\(imageName)"], fileData: imageData!, sucess: {(responseData)-> Void in
-                let result = String(data: responseData! as Data, encoding: String.Encoding.utf8)
-                print(result ?? "")
-            }, failure: { (error) -> Void in
-            })
-            self.uploadButton.isEnabled = true
+//            uploadFileToAWS(urlString: uploadURL, name: "file", fileName: imageName, mimeType: "image/jpg", parameters: ["key":"\(imageName)"], fileData: imageData!, sucess: {(responseData)-> Void in
+//                let result = String(data: responseData! as Data, encoding: String.Encoding.utf8)
+//                print(result ?? "")
+//            }, failure: { (error) -> Void in
+//            })
+            let configuration = URLSessionConfiguration.default
+            let session = URLSession(configuration: configuration, delegate: self, delegateQueue: OperationQueue.main)
+            let task = uploadFileToAWS(viewController: self, session: session, urlString: uploadURL, name: "file", fileName: imageName, mimeType: "image/jpg", parameters: ["key":"\(imageName)"], fileData: imageData!)
+            task.resume()
         }
         
         picker.dismiss(animated: true, completion: nil)
@@ -81,6 +86,9 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         self.uploadProgressView.progress = uploadProgress
         let uploadPercent = Int(uploadProgress * 100)
         self.uploadProgressLabel.text = "\(uploadPercent)%"
+        if uploadPercent == 100 {
+            self.uploadButton.isEnabled = true
+        }
         
     }
     
@@ -92,6 +100,9 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         self.uploadButton.isEnabled = true
     }
     
-    
+    public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse, completionHandler: @escaping (URLSession.ResponseDisposition) -> Swift.Void){
+        
+        self.uploadButton.isEnabled = true
+    }
 }
 
